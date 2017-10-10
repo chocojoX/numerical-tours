@@ -160,6 +160,7 @@ def perform_wavortho_transf(f, Jmin, dir, h):
         fW = f.copy()
         f1 = fW.copy()
         for j in np.arange(Jmin, Jmax + 1):
+            j = int(j)
             A = f1[:2 ** (j + 1):, :2 ** (j + 1):]
             for d in np.arange(1, 3):
                 if d == 1:
@@ -194,6 +195,7 @@ def plot_wavelet(fW, Jmin=0):
     Jmax = np.log2(n) - 1
     U = fW.copy()
     for j in np.arange(Jmax, Jmin - 1, -1):
+        j = int(j)
         U[:2 ** j:,    2 ** j:2 **
             (j + 1):] = rescaleWav(U[:2 ** j:, 2 ** j:2 ** (j + 1):])
         U[2 ** j:2 ** (j + 1):, :2 **
