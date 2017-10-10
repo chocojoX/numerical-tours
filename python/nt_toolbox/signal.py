@@ -147,6 +147,7 @@ def perform_wavortho_transf(f, Jmin, dir, h):
         ### FORWARD ###
         fW = f.copy()
         for j in np.arange(Jmax, Jmin - 1, -1):
+            j = int(j)
             A = fW[:2 ** (j + 1):, :2 ** (j + 1):]
             for d in np.arange(1, 3):
                 Coarse = subsampling(cconv(A, h, d), d)
